@@ -1,0 +1,27 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>ToDo</title>
+        <link rel="stylesheet" href="{% static 'css/todoapp.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+            <h1>ToDo</h1>
+            <ul>
+                {% for item in todo %}
+                    <li style="font-size: 23;">{{ item.quest }}
+                        <form action="/deleteTodo/{{ item.id }}" 
+                              style="display: inline;"
+                              method="POST">{% csrf_token %}
+                            <button type="submit" class="glyphicon glyphicon-remove"></button><br>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+            <form action="/addTodo/" method="POST">{% csrf_token %}
+                <input type="text" name="quest"/>
+                <input type="submit" value="Add"/>
+            </form>
+    </body>
+</html>
