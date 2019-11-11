@@ -19,7 +19,7 @@
                     </li>
                 {% endfor %}
             </ul>
-            <form action="/addTodo/" method="POST">{% csrf_token %}
+            <form class="add_button" action="/addTodo/" method="POST">{% csrf_token %}
                 <input type="text" name="quest"/>
                 <input type="submit" value="Add"/>
             </form>
